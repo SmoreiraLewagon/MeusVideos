@@ -1,0 +1,50 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All Videos</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @videos.count %> videos out of our <%= Video.count %> on our website.</p>
+      <% else %>
+        <p>All <%= Video.count %> videos.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @videos.each do |video| %>
+      <div class="col-4">
+        <div class="video-card">
+          <div class="video-card-image" style="background-image: url('<%= video.url %>')"></div>
+          <div class="video-card-content">
+            <div class="video-card-title">
+              <h4><%= video.title %></h4>
+            </div>
+            <%# <p><%= video.address %></p>
+            <%# <div class="flex">
+              <div class="flex">
+                <i class="material-icons mr-2">people</i><span><%= video.number_of_guests %></span>
+              <%# </div>
+              <div class="flex ml-3">
+                <i class="material-icons mr-2">euro_symbol</i> <%= video.price_per_night %>
+              <%# </div> 
+            </div> %> 
+          </div>
+          <div class="video-card-actions">
+            <%= link_to 'More info', video_path(video) %>
+            <%= link_to 'Edit', edit_video_path(video), class: 'ml-3 text-warning' %>
+            <%= link_to "Remove", video_path(video),
+                method: :delete, 
+                data: { confirm: "Are you sure?" },
+                class: 'ml-3 text-danger'
+            %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
