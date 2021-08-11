@@ -13,6 +13,7 @@ class VideosController < ApplicationController
 
   # GET /videos/1 or /videos/1.json
   def show
+    @tag = Tag.new
   end
 
   # GET /videos/new
@@ -22,6 +23,7 @@ class VideosController < ApplicationController
 
   # GET /videos/1/edit
   def edit
+    @tag = Tag.new
   end
 
   # POST /videos or /videos.json

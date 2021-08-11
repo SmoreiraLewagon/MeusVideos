@@ -1,0 +1,44 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All tags</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @tags.count %> tags out of our <%= Tag.count %> on our website.</p>
+      <% else %>
+        <p>All <%= Tag.count %> tags.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @tags.each do |tag| %>
+      <div class="col-4">
+        <div class="video-card">
+          <div class="video-card-image" ><%= tag.category %></div>
+          <div class="video-card-content">
+            <div class="video-card-title">
+              <h4><%= tag.favorite %></h4>
+            </div>
+            <%# <p><%= tag.address %></p>
+            <%# <div class="flex">
+              <div class="flex">
+                <i class="material-icons mr-2">people</i><span><%= tag.number_of_guests %></span>
+              <%# </div>
+              <div class="flex ml-3">
+                <i class="material-icons mr-2">euro_symbol</i> <%= tag.price_per_night %>
+              <%# </div> 
+            </div> %> 
+          </div>
+          <div class="video-card-actions">
+            <%= link_to 'home', root_path%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
