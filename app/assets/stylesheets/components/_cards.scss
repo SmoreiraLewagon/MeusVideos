@@ -16,6 +16,7 @@
 .video-card-content {
     padding: 24px;
     background-color: #F8F9FA;
+    box-shadow: 0 0 15px rgba(250, 245, 245, 0.2);
 }
 
 .video-card-actions {
@@ -23,6 +24,7 @@
     background-color: inherit;
     border-top: 1px solid rgba(160,160,160,0.2);
     padding: 16px 24px;
+    margin: 130px 0px;
 }
 
 .video-show-card {
@@ -31,4 +33,25 @@
     margin-bottom: 20px;
     box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     border-radius: 3px;
+    text-align: center;
 }
+
+.card-tags {
+    position: absolute;
+    width: 80%;
+    padding: 8px;
+    margin: 10px 0px 10px -6px;
+  
+    span {
+      background: $blue;
+      font-size: .7em;
+      padding: 2px 4px;
+      border-radius: 3px;
+      margin-right: 4px;
+    }
+  
+    a {
+      color: white;
+    }
+  }
+  
