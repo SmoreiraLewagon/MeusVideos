@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20210810182114) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.boolean "favorite", default: false, null: false
+    t.boolean "favorite", default: false, null: falsed
     t.string "category"
     t.bigint "video_id", null: false
     t.datetime "created_at", null: false
