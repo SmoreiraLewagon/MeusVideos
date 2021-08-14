@@ -1,23 +1,49 @@
-<div class="map" style="background-image: url('<%= @video.url %>')"></div>
+
 
 <div class="container margin-top-negative">
   <div class="row">
     <div class="col-8">
       <div class="video-show-card">
+        <iframe width="700" height="310" src=<%= @video.url.sub("watch?v=", "embed/") %>  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <h1><%= @video.title %></h1>
-        <%# <p class="video-show-address"><%= @video.address %></p> 
+        <span>
+         <% @video.tags.each do |tag| %>
+            <span>
+              <%= tag.category %>
+              <%= link_to tags_path(tag), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fas fa-times"></i>
+              <% end %>
+            </span>
+          <% end %>
+        </span>
+        <%= link_to new_tag_path(@tag) do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
       </div>
     </div>
 
     <div class="col-4">
       <div class="video-show-card">
-        <h3>Details</h3>
-      </div>
-      <div class="video-show-card">
-        <div class="flex-align">
-          <h6 class="no-mb">Share</h6>
+        <h3>Comments</h3>
+        <div class="col-12" style="margin: 0 auto; background: white; width: 600px">
+          <div class="container">
+            <%= simple_form_for [@video, @comment] do |f| %>
+                    <%= f.input :author %>
+                    <%= f.input :body %>
+                    <%= f.submit 'Puts your comment', class: 'btn btn-warning' %>
+            <% end %>
+            <%= link_to 'Home menu', root_path, class: 'btn btn-warning m-3' %>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="video-show-card-comment">
+      <% @video.comments.each do |comment| %>
+        <div class="video-show-card">
+          <p><%= comment.author %>:
+          <%= comment.body %> <p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
