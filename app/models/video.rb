@@ -1,4 +1,4 @@
 class Video < ApplicationRecord
-    has_many :tags
-    has_many :comments
+    has_many :tags, dependent: :destroy
+    has_many :comments, dependent: :destroy
 end
