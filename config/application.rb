@@ -14,6 +14,9 @@ module MeusVideos
   generate.test_framework :test_unit, fixture: false
 end
 
+    # config/application.rb
+    config.assets.initialize_on_precompile = false
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
