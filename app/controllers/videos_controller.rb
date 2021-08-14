@@ -5,7 +5,7 @@ class VideosController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      @videos = Video.where("name LIKE ?","%#{params[:query]}%")
+      @videos = Video.where("title LIKE ?","%#{params[:query]}%")
     else
       @videos = Video.all
     end
@@ -13,12 +13,14 @@ class VideosController < ApplicationController
 
   # GET /videos/1 or /videos/1.json
   def show
-    @tag = Tag.new
+    @tag = Tag.new(video: @video)
+    @comment = Comment.new(video: @video)
   end
 
   # GET /videos/new
   def new
     @video = Video.new
+    @tag = Tag.new
   end
 
   # GET /videos/1/edit
